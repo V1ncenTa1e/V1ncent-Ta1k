@@ -7,10 +7,166 @@
     <link rel="icon" href="/favicon.png" type="image/png">
     <style>
         /* 这里粘贴您完整的CSS代码（原样复制） */
+        /* 全局样式 - 保持不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        /* 导航栏 - 修改部分开始 */
+        header {
+            background: #35424a;
+            color: white;
+            padding: 1rem 0;
+            position: relative;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .brand-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .desktop-nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .desktop-nav a:hover {
+            background: #e8491d;
+        }
+        
+        /* 汉堡菜单按钮 - 默认隐藏 */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        /* 移动端样式 */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+                order: -1;
+            }
+            
+            .brand-logo {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background: #35424a;
+                padding: 5rem 2rem;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+            
+            .mobile-nav.active {
+                left: 0;
+            }
+            
+            .mobile-nav a {
+                display: block;
+                padding: 1rem 0;
+                border-bottom: 1px solid #4a5c6b;
+                color: white;
+                text-decoration: none;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.5);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s;
+                z-index: 999;
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+        /* 导航栏 - 修改部分结束 */
+
+        /* 主要内容 - 保持不变 */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            margin-bottom: 1rem;
+            color: #35424a;
+        }
+        
+        /* 页脚 - 保持不变 */
+        footer {
+            background: #35424a;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
     </style>
 </head>
 <body>
     <!-- 导航栏（粘贴您修改后的完整导航代码） -->
+    
+    <!-- 修改后的导航栏结构 -->
     <header>
         <div class="nav-container">
             <button class="hamburger" id="hamburger">☰</button>
@@ -22,9 +178,15 @@
                 <a href="#">Contact</a>
             </nav>
         </div>
+        
+        <!-- 移动端导航菜单 -->
         <nav class="mobile-nav" id="mobileNav">
-            <!-- 移动导航内容 -->
+            <a href="/index.html">Home</a>
+            <a href="/pages/mystory.html">My Story</a>
+            <a href="#">Projects</a>
+            <a href="#">Contact</a>
         </nav>
+        <div class="overlay" id="overlay"></div>
     </header>
 
     <!-- 页面专属内容区域 -->
@@ -37,6 +199,20 @@
 
     <script>
         // 粘贴您的JavaScript代码
+        // 汉堡菜单交互逻辑
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const overlay = document.getElementById('overlay');
+        
+        hamburger.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+            overlay.classList.toggle('active');
+        });
+        
+        overlay.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+        });
     </script>
 </body>
 </html>
