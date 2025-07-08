@@ -21,9 +21,10 @@
             color: #333;
         }
         
+        /* 导航栏 */
         header {
-            background: #35424a;
-            color: white;
+            background: #FFDB58;
+            color: #6c3baa;
             padding: 1rem 0;
         }
         
@@ -34,7 +35,7 @@
         }
         
         nav a {
-            color: white;
+            color: #6c3baa;
             text-decoration: none;
             font-weight: bold;
             padding: 0.5rem 1rem;
@@ -43,9 +44,26 @@
         }
         
         nav a:hover {
-            background: #e8491d;
+            background: pink;
         }
         
+        @media (max-width: 600px) {
+    nav {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    nav a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 0;
+         justify-content: center;
+    }
+    .container {
+        width: 95%;
+        padding: 1rem;
+    }
+}
+        /* 主要内容 */
         .container {
             width: 80%;
             max-width: 1200px;
@@ -55,6 +73,12 @@
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
         
+        h1 {
+            margin-bottom: 1rem;
+            color: #35424a;
+        }
+        
+        /* 页脚 */
         footer {
             background: #35424a;
             color: white;
