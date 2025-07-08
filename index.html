@@ -1,102 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vincent's Website</title>
-    <!-- 现代浏览器favicon（PNG/SVG） -->
-<link rel="icon" href="favicon.png" type="image/png">
-    <style>
-        /* 全局样式 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-        
-        body {
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        
-        /* 导航栏 */
-        header {
-            background: #35424a;
-            color: white;
-            padding: 1rem 0;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            transition: background 0.3s;
-        }
-        
-        nav a:hover {
-            background: #e8491d;
-        }
-        
-        @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    nav a {
-        width: 100%;
-        text-align: center;
-        padding: 1rem 0;
-    }
-    .container {
-        width: 95%;
-        padding: 1rem;
-    }
-}
-        /* 主要内容 */
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            margin-bottom: 1rem;
-            color: #35424a;
-        }
-        
-        /* 页脚 */
-        footer {
-            background: #35424a;
-            color: white;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/index.html">Home</a>
-            <a href="/pages/mystory.html">My Story</a> <!-- 链接到新页面 -->
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
-        </nav>
-    </header>
-    
+---
+layout: default
+title: Vincent's Website
+---
     <div class="container" style="text-align:center;">
         <h1>Welcome to My Website</h1>
         <p>This is the homepage of my personal website. Click "My Story" to learn more about me!</p>
@@ -108,9 +13,3 @@
           </div>
          <!-- 图片模板结束 -->
     </div>
-    
-    <footer>
-        <p>&copy; 2025 Vincent's Website. All rights reserved.</p>
-    </footer>
-</body>
-</html>
