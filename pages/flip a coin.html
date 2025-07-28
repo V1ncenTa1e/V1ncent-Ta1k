@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .coin {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+        }
+        .coin .heads, .coin .tails {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+        .coin .heads {
+            background-color: #4CAF50;
+        }
+        .coin .tails {
+            background-color: #f44336;
+            transform: rotateY(180deg);
+        }
+        .flip {
+            animation: spin 1s ease-in-out;
+        }
+        @keyframes spin {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(720deg); }
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #1976D2;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="coin" id="coin">
+        <div class="heads">Heads</div>
+        <div class="tails">Tails</div>
+    </div>
+    <button onclick="flipCoin()">Flip Coin</button>
+    <div id="result"></div>
+
+    <script>
+        function flipCoin() {
+            const coin = document.getElementById('coin');
+            const result = document.getElementById('result');
+            
+            // Remove previous flip animation
+            coin.classList.remove('flip');
+            
+            // Generate random result (0 for heads, 1 for tails)
+            const isHeads = Math.random() < 0.5;
+            
+            // Trigger reflow before adding animation
+            void coin.offsetWidth;
+            
+            // Add flip animation
+            coin.classList.add('flip');
+            
+            // Set rotation based on result
+            coin.style.transform = isHeads ? 'rotateY(0deg)' : 'rotateY(180deg)';
+            
+            // Update result text after animation
+            setTimeout(() => {
+                result.textContent = isHeads ? 'Heads!' : 'Tails!';
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
